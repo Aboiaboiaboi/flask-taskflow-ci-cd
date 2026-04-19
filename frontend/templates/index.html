@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Task Manager Dashboard</h1>
+            <p class="subtitle">Organize your tasks efficiently</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Add Task Section -->
+            <section class="add-task-section">
+                <h2>Add New Task</h2>
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="taskInput" 
+                        placeholder="Enter a new task..." 
+                        maxlength="200"
+                    >
+                    <button id="addBtn" class="btn btn-primary">Add Task</button>
+                </div>
+                <p id="errorMsg" class="error-message"></p>
+            </section>
+
+            <!-- Filters Section -->
+            <section class="filters-section">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </section>
+
+            <!-- Tasks List Section -->
+            <section class="tasks-section">
+                <h2>Tasks</h2>
+                <div id="tasksList" class="tasks-list">
+                    <p class="loading">Loading tasks...</p>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <span class="stat-label">Total Tasks</span>
+                    <span id="totalCount" class="stat-value">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Completed</span>
+                    <span id="completedCount" class="stat-value">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Pending</span>
+                    <span id="pendingCount" class="stat-value">0</span>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
