@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flask-taskflow-dev
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+      - /app/__pycache__
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+    command: flask run --host=0.0.0.0
+    stdin_open: true
+    tty: true
+    networks:
+      - taskflow-network
+
+networks:
+  taskflow-network:
+    driver: bridge

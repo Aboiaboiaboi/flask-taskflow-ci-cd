@@ -1,28 +1,19 @@
-# Python virtual environment
+# Python
 venv/
-
-# Python cache files
+.venv/
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
 
-# SQLite database (local dev data)
+# Local
 tasks.db
-
-# Environment variables (if you add later)
 .env
 
-# OS/system files
+# OS
 .DS_Store
 Thumbs.db
 
-# Local editor configs
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-
-# Project-specific
-.git/
-.github/
