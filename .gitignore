@@ -16,3 +16,13 @@ tasks.db
 # OS/system files
 .DS_Store
 Thumbs.db
+
+# Local editor configs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project-specific
+.git/
+.github/
