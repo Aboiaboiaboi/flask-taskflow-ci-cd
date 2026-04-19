@@ -168,15 +168,6 @@ pip install -r requirements.txt
 - **Filtering:** UI-only (all filtering happens client-side)
 - **Security:** XSS protection via `escapeHtml()` function
 
-## 📚 AI Development Guide
-
-For AI agents and automated development tools, see `.github/copilot-instructions.md` for:
-- Detailed architecture explanation
-- Code patterns and conventions
-- Database operation guidelines
-- Component styling reference
-- Common development tasks
-
 ## 🎯 Common Tasks
 
 ### Adding a New Task Field
