@@ -1,0 +1,18 @@
+# Python virtual environment
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# SQLite database (local dev data)
+tasks.db
+
+# Environment variables (if you add later)
+.env
+
+# OS/system files
+.DS_Store
+Thumbs.db
