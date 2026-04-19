@@ -1,0 +1,42 @@
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv
+env
+ENV
+
+# Git
+.git
+.gitignore
+
+# Environment files
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Build artifacts
+build
+dist
+*.egg-info
+
+# Database (optional - let Docker volumes handle persistence)
+# tasks.db
+
+# Documentation and misc
+README.md
+LICENSE
+.gitattributes
