@@ -1,9 +1,12 @@
 from flask import Flask, request, jsonify, render_template
 import sqlite3
+import os
 
 app = Flask(__name__, template_folder='frontend/templates', static_folder='frontend/static')
 
-DB = "tasks.db"
+# Create data directory if it doesn't exist
+os.makedirs('data', exist_ok=True)
+DB = "data/tasks.db"
 
 
 # 🔧 helper function
