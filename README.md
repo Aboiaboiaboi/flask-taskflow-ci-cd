@@ -1,60 +1,116 @@
 # Flask TaskFlow
 
-Premium task manager with Flask, SQLite, and modern UI.
+A simple task manager built with Flask + SQLite featuring a modern UI, REST API, and Docker support.
 
-## Setup
+---
+
+## 🚀 Run with Docker (Recommended)
+
+Pull and run directly from Docker Hub:
 
 ```bash
-# Clone
+docker run -d \
+-p 5000:5000 \
+-v taskflow-data:/app/data \
+--name taskflow \
+aboiaboiaboi/flask-taskflow
+```
+
+Open:
+http://localhost:5000
+
+✔ Includes persistent database using Docker volume
+
+---
+
+## 🐳 Run with Docker Compose (From GitHub)
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/aboiaboiaboi/flask-taskflow-ci-cd.git
 cd flask-taskflow-ci-cd
-
-# Virtual environment
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install & run
-pip install -r requirements.txt
-python3 app.py
-
-# Open http://localhost:5000
 ```
 
-## Docker
+### 2. Start the application
 
 ```bash
-docker-compose up
+docker compose up --build
 ```
 
-Visit `http://localhost:5000`
+### 3. Access app
 
-## Features
+http://localhost:5000
 
-- CRUD operations (Create, Read, Update, Delete tasks)
-- Real-time filtering (All/Pending/Completed)
-- Responsive design (desktop & mobile)
-- RESTful API
+✔ Auto-handles volumes, ports, and environment
+
+---
+
+## 💻 Manual Setup (Development Mode)
+
+### 1. Clone repo
+
+```bash
+git clone https://github.com/aboiaboiaboi/flask-taskflow-ci-cd.git
+cd flask-taskflow-ci-cd
+```
+
+### 2. Create virtual environment
+
+```bash
+python3 -m venv venv
+source venv/bin/activate   # Windows: venv\Scripts\activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run application
+
+```bash
+python3 app.py
+```
+
+Open:
+http://localhost:5000
+
+---
+
+## 📦 Features
+
+- Create, update, delete tasks (CRUD)
+- Filter tasks (All / Pending / Completed)
+- REST API support
 - SQLite persistence
-- XSS protection
-- Premium UI with gradients & animations
+- Responsive modern UI
+- XSS-safe input handling
+- Lightweight Flask backend
 
-## API
+---
 
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| `GET` | `/tasks` | Get all tasks |
-| `POST` | `/tasks` | Create task |
-| `PUT` | `/tasks/<id>` | Update task |
-| `DELETE` | `/tasks/<id>` | Delete task |
+## 🔌 API Endpoints
 
-**Example:**
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /tasks | Get all tasks |
+| POST | /tasks | Create a task |
+| PUT | /tasks/<id> | Update task |
+| DELETE | /tasks/<id> | Delete task |
+
+### Example request:
+
 ```bash
 curl -X POST http://localhost:5000/tasks \
   -H "Content-Type: application/json" \
   -d '{"task": "Buy groceries"}'
 ```
 
-## Database
+---
+
+## 🗄 Database Schema
 
 ```sql
 CREATE TABLE tasks (
@@ -64,12 +120,28 @@ CREATE TABLE tasks (
 );
 ```
 
-Reset: `rm tasks.db && python3 app.py`
+Reset database:
 
-## Stack
+```bash
+rm data/tasks.db
+```
 
-- Python 3.8+
-- Flask 3.1.3
+---
+
+## 🧱 Tech Stack
+
+- Python 3.11
+- Flask
 - SQLite
-- Vanilla JavaScript
-- Modern CSS
+- Docker
+- Docker Compose
+- HTML / CSS / JavaScript
+
+---
+
+## 🧠 Notes
+
+- Docker version uses persistent volume (`taskflow-data`)
+- Compose version automatically configures everything
+- Manual setup is for development only
+
