@@ -23,9 +23,9 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run basic import test
+      - name: Run tests          # ← was "Run basic import test"
         run: |
-          python -c "import app; print('✓ CI OK')"
+          pytest --tb=short      # ← was python -c "import app; print('✓ CI OK')"
 
       # -------- CD PART --------
       - name: Log in to Docker Hub
