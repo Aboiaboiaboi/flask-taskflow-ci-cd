@@ -1,24 +1,14 @@
-# Use Python 3.14 slim image as base
-FROM python:3.14-slim
-
-# Set working directory in container
+# Multi-stage build: builder installs deps, runtime copies only what's needed
+FROM python:3.11-slim AS builder
 WORKDIR /app
-
-# Set environment variables for Flask
-ENV FLASK_APP=app.py
-ENV FLASK_ENV=development
-
-# Copy requirements.txt first (layer caching)
 COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy entire project files
-COPY . .
-
-# Expose port 5000
+FROM python:3.11-slim
+WORKDIR /app
+COPY --from=builder /install /usr/local
+RUN useradd --no-create-home --shell /bin/false appuser
+USER appuser
+COPY --chown=appuser:appuser . .
 EXPOSE 5000
-
-# Run Flask development server
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:5000", "app:app"]
